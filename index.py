@@ -1,6 +1,7 @@
 import click
 import pyperclip
 from create_password import create_password
+from save_password import save_password
 
 # Create main group called cli
 # This will be the root group
@@ -25,6 +26,11 @@ def generate(length, save, no_numbers, no_symbols):
 
     click.echo(
         f"{click.style('Generated password:', fg='green')} {click.style(password, bold=True)} {click.style('Copied to clipboard', bg='yellow', fg='black')}")
+
+    if save:
+        save_password(password)
+        click.echo(
+            f"{click.style('Password saved to passwords.txt', bg='yellow', fg='black')}")
 
 
 # Add commands to main group (cli)
